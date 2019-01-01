@@ -18,13 +18,18 @@ class App(Frame):
         self.master.tk_setPalette(background= "pink")
 
         self.label1 = Label(dialog_frame, text=" CALCULATOR", font=("Arial", 12, 'bold'), anchor="w").pack(fill="both")
-        self.label2 = Label(dialog_frame, text=" \n\n Please enter you first argument", font=("Arial", 12, 'bold')).pack(fill=X,)
+        self.label2 = Label(dialog_frame, text=" \n\n Please enter you first argument", font=("Arial", 12, 'bold'),
+                            anchor="w").pack(fill=X, pady=10)
         self.label3 = Label(dialog_frame, text=" \n\n\n\n Please enter you second argument",
-                            font=("Arial", 12, 'bold')).pack(fill=X, )
+                            font=("Arial", 12, 'bold'), anchor="w").pack(fill=X, pady=10 )
 
-        self.label_result = Label(dialog_frame, text="Result", font=("Arial", 12, 'bold'), anchor="w").pack(fill="both")
+        self.label_result = Label(dialog_frame, text="Result", font=("Arial", 12, 'bold'), anchor="w")
+        self.label_result.pack(fill="both")
 
         self.buttonCal1 = Button(dialog_frame, text="Add", font=("Arial, 16"), command=self.add).pack()
+        self.buttonCal2 = Button(dialog_frame, text="Subtract", font=("Arial, 16"), command=self.sub).pack()
+        self.buttonCal3 = Button(dialog_frame, text="Multiply", font=("Arial, 16"), command=self.mul).pack()
+        self.buttonCal4 = Button(dialog_frame, text="Divide", font=("Arial, 16"), command=self.div).pack()
 
         self.number1 = StringVar()
         self.number2 = StringVar()
@@ -36,6 +41,27 @@ class App(Frame):
         num1= (self.number1.get())
         num2 = (self.number2.get())
         result=int(num1)+int(num2)
+        self.label_result.config(text="Result is %d" % result, font=("Arial, 16"))
+        return
+
+    def sub(self):
+        num1= (self.number1.get())
+        num2 = (self.number2.get())
+        result=int(num1)-int(num2)
+        self.label_result.config(text="Result is %d" % result, font=("Arial, 16"))
+        return
+
+    def mul(self):
+        num1= (self.number1.get())
+        num2 = (self.number2.get())
+        result=int(num1)*int(num2)
+        self.label_result.config(text="Result is %d" % result, font=("Arial, 16"))
+        return
+
+    def div(self):
+        num1= (self.number1.get())
+        num2 = (self.number2.get())
+        result=int(num1)/int(num2)
         self.label_result.config(text="Result is %d" % result, font=("Arial, 16"))
         return
 
